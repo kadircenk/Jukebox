@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.Parse;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -12,6 +14,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Enable Local Datastore (parse).
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "9KD0py8rCHOpRrn67pVKGZN1tHKgf1mRS4tOuPvP", "grZ4vGQ7Ydl7W7SnWchhjbyr4oo6zcEabO1dR6Fq");
+
     }
 
 
