@@ -1,11 +1,18 @@
 package com.example.kca.jukebox;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.parse.Parse;
+import com.parse.ParseAnalytics;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -19,6 +26,15 @@ public class MainActivity extends ActionBarActivity {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "9KD0py8rCHOpRrn67pVKGZN1tHKgf1mRS4tOuPvP", "grZ4vGQ7Ydl7W7SnWchhjbyr4oo6zcEabO1dR6Fq");
 
+        //Parse istatistik toplayici kodu
+        ParseAnalytics.trackAppOpenedInBackground(new Intent());
+
+        //ornek bi istatistik toplama, parse kullanir
+        Map<String, String> dimensions = new HashMap<>();
+        // What type of news is this?
+        dimensions.put("Time", DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.LONG).format(Calendar.getInstance().getTime()));
+        // Send the dimensions to Parse along with the 'read' event
+        ParseAnalytics.trackEventInBackground("read", dimensions);
     }
 
 
